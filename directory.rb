@@ -24,10 +24,22 @@ def print_header
 end
 
 def print(students)
+  #prompts user to input a letter
+  puts "Please input the initial letter:"
+  initial = gets.chomp
   students.each_with_index  do |student, index|
-    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    if student[:name][0].downcase == initial.downcase
+      puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+    else
+    end
   end
 end
+
+# def print(students)
+#   students.each_with_index  do |student, index|
+#     puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
+#   end
+# end
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
