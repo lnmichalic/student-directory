@@ -28,7 +28,7 @@ def print(students)
   puts "Please input the initial letter:"
   initial = gets.chomp
   students.each_with_index  do |student, index|
-    if student[:name][0].downcase == initial.downcase
+    if student[:name][0].downcase == initial.downcase && student[:name].length < 12
       puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)"
     else
     end
