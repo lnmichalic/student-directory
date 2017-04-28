@@ -49,11 +49,14 @@ def input_students
     students << student
     puts "Which cohort is #{name} in?"
     user_input = gets.chomp
+    #   Student.cohorts.include?(user_input.to_sym) ? student.cohort = user_input : puts "Please enter a valid cohort."
+    until Student.cohorts.include?(user_input.downcase.to_sym) do
       break if user_input.empty?
       puts "Please enter a valid cohort."
       user_input = gets.chomp
     end
     student.cohort = user_input
+
     puts "Now we have #{students.count} students"
     name = gets.chomp
   end
@@ -101,8 +104,8 @@ end
 
 build_list
 # Testing calls
-# puts @students[0].name
-# puts @students[0].age
-# puts @students[0].cohort
-# puts @students[0].nationality
-# puts @students[0].hobbies
+puts @students[0].name
+puts @students[0].age
+puts @students[0].cohort
+puts @students[0].nationality
+puts @students[0].hobbies
