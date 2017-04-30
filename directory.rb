@@ -48,10 +48,11 @@ end
 
 def process(selection)
   case selection
-  when "1" || "input" then input_students   # input the students
-  when "2" || "show"  then build_list       # print the list of students
-  when "9" || "exit"  then exit             # exits the program
-  else                then puts "Invalid input, try again"
+    when "1" || "input" then input_students   # input the students
+    when "2" || "show"  then build_list       # print the list of students
+    when "9" || "exit"  then exit             # exits the program
+    else puts "Invalid input, try again"
+  end
 end
 
 def input_students
@@ -69,10 +70,10 @@ def input_students
       user_input = gets.chomp
     end
     student.cohort = user_input
-    puts "Now we have #{@students.count} student#{pluralize(students.count)}"
+    puts "Now we have #{@students.count} student#{pluralize(@students.count)}"
     name = gets.chomp
   end
-  if students.empty?
+  if @students.empty?
     puts "Please enter at least one student"
     input_students
   end
@@ -82,7 +83,7 @@ def build_list
   print_header
   # print_student_by_cohort(@students)
   print_students_list
-  print_footer(@students)
+  print_footer
 end
 
 def print_header
@@ -97,12 +98,13 @@ def print_students_list
   puts "Please input the initial letter of names to print:"
   initial = gets.chomp
   while students.count != index  do
-    if students[index].name.to_s[0].downcase == initial.downcase && students[index].name.to_s.length < 12
+    if students[index].name.to_s[0].downcase == initial.downcase && students[index].name.to_s.length < 12 then
       puts "#{index+1}.".ljust(@lw/6) + " #{students[index].name}".center(@lw/2) + "(#{students[index].cohort.capitalize} cohort)".rjust(@lw/3)
     else
     end
     index+=1
   end
+  @students = students
 end
 
 def sorts_cohort(students)
@@ -113,7 +115,7 @@ def print_student_by_cohort(students)
   list_to_print =[]
   puts "Enter cohort to print:"
   user_input = gets.chomp
-  students.map{|student| list_to_print << student.name if student.cohort == user_input.downcase}
+  students.map{ |student| list_to_print << student.name if student.cohort == user_input.downcase}
   puts list_to_print
 end
 
@@ -121,9 +123,10 @@ def pluralize(n)
   n == 1? "" : "s"
 end
 
-def print_footer(students)
-  puts "Overall, we have #{students.count} great student#{pluralize(students.count)}".center(@lw)
+def print_footer
+  puts "Overall, we have #{@students.count} great student#{pluralize(@students.count)}".center(@lw)
 end
+
 
 interactive_menu
 
