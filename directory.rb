@@ -33,6 +33,11 @@ class Student
   def self.cohorts
     @@COHORTS
   end
+
+  def hash
+    {name: name, cohort: cohort, age: age, nationality: nationality, hobbies: hobbies}
+  end
+
 end
 
 def interactive_menu
@@ -166,7 +171,7 @@ end
 def save_students(filename)
   CSV.open(filename, "w") do |line|
     @students.each do |student|
-      line = [student.name, student.cohort]
+      line << [student.name, student.cohort]
     end
   end
 end

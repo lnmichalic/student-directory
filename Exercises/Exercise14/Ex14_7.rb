@@ -166,7 +166,7 @@ end
 def save_students(filename)
   CSV.open(filename, "w") do |line|
     @students.each do |student|
-      line = [student.name, student.cohort]
+      line << [student.name, student.cohort]
     end
   end
 end
