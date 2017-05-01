@@ -53,8 +53,8 @@ end
 def print_menu
   puts "1. Input the students"
   puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list of students.csv"
+  puts "3. Save the list to a file"
+  puts "4. Load the list of a file"
   puts "Optional Features:"
   puts "5. Show all students starting with initial of choice"
   puts "6. Print list of student by cohort"
